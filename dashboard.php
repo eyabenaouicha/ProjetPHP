@@ -43,7 +43,7 @@ include_once("connexion.php");
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="categorie/index.php">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Categorie</span>
           </a>
