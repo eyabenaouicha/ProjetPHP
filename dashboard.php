@@ -37,7 +37,7 @@ include_once("connexion.php");
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="chambre/index.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Chambre</span>
           </a>

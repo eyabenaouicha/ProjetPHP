@@ -50,13 +50,13 @@ if(!empty($_GET["id"])){
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../chambre/index.php">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Chambre</span>
                 </a>
             </li>
             <li>
-                <a href="categorie/index.php">
+                <a href="../categorie/index.php">
                     <i class='bx bx-coin-stack'></i>
                     <span class="links_name">Categorie</span>
                 </a>
