@@ -28,13 +28,13 @@ include_once("../connexion.php");
                 </a>
             </li>
             <li>
-                <a href="#" class="active">
+                <a href="index.php" class="active">
                     <i class='bx bx-box'></i>
                     <span class="links_name">Utilisateur</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../Reservation/index.php">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Reservation</span>
                 </a>
@@ -46,7 +46,7 @@ include_once("../connexion.php");
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="categorie/index.php">
                     <i class='bx bx-coin-stack'></i>
                     <span class="links_name">Categorie</span>
                 </a>
@@ -65,10 +65,7 @@ include_once("../connexion.php");
                 <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard">Dashboard</span>
             </div>
-            <div class="search-box">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
-            </div>
+           
             <div class="profile-details">
                 <img src="images/profile.jpg" alt="">
                 <span class="admin_name">Prem Shahi</span>
@@ -78,10 +75,14 @@ include_once("../connexion.php");
 
         <div class="home-content" style="width: 147%!important;">
             <?php
-            $pdo = new connect();
-            $query = "select * from utilisateur";
-            $pdostmt = $pdo->prepare($query);
-            $pdostmt->execute();
+            if (!empty($_POST["inputnom"]) && !empty($_POST["inputprenom"]) && !empty($_POST["inputemail"])&& !empty($_POST["inputemail"])&& !empty($_POST["inputnumero"])&& !empty($_POST["inputcin"])&& !empty($_POST["inputtype"])&& !empty($_POST["inputmdp"])) {
+                $pdo = new connect();
+                $query = "insert into utilisateur(nom,prenom,email,numero,cin,type,mdp) values(:nom,:prenom,:email,:numero,:cin,:type,:mdp)";
+                $pdostmt = $pdo->prepare($query);
+                $pdostmt->execute(["nom" => $_POST["inputnom"], "prenom" => $_POST["inputprenom"], "email" => $_POST["inputemail"], "numero" => $_POST["inputnumero"], "cin" => $_POST["inputcin"], "type" => $_POST["inputtype"], "mdp" => $_POST["inputmdp"]]);
+                $pdostmt->closeCursor(); //liberer pdostmt
+                header("location:index.php"); //redirection vers test.php
+            }
             ?>
 
             <div class="sales-boxes">
@@ -92,37 +93,45 @@ include_once("../connexion.php");
 
                         <div class="wrapper">
                             <div class="registration_form">
-                                        <form>
-                                            <div class="form_wrap">
-                                                <div class="input_grp">
-                                                        <div class="input_wrap">
-                                                            <label for="fname">First Name</label>
-                                                            <input type="text" id="fname">
-                                                        </div>
-                                                            <div class="input_wrap">
-                                                                <label for="lname">Last Name</label>
-                                                                <input type="text" id="lname">
-                                                            </div>
-                                                </div>
-                                                    <div class="input_wrap">
-                                                        <label for="email">Email Address</label>
-                                                        <input type="text" id="email">
-                                                    </div>
-                                                        <div class="input_wrap">
-                                                            <label for="city">City</label>
-                                                            <input type="text" id="city">
-                                                        </div>
-                                                            <div class="input_wrap">
-                                                                <label for="country">Country</label>
-                                                                <input type="text" id="country">
-                                                            </div>
-                                            </div><br>
-                                  
-                    <div class="button">
-                        <a href="#"><input type="submit" value="Register Now" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
-</a>
-                    </div>
-                    </form>
+                                <form action="create.php" method="post">
+                                    <div class="form_wrap">
+                                        <div class="input_grp">
+                                            <div class="input_wrap">
+                                                <label for="fname">Nom</label>
+                                                <input type="text" name="inputnom">
+                                            </div>
+                                            <div class="input_wrap">
+                                                <label for="lname">Prenom</label>
+                                                <input type="text" name="inputprenom">
+                                            </div>
+                                        </div>
+                                        <div class="input_wrap">
+                                            <label for="email">Email Address</label>
+                                            <input type="text" name="inputemail">
+                                        </div>
+                                        <div class="input_wrap">
+                                            <label for="city">Numero</label>
+                                            <input type="text" name="inputnumero">
+                                        </div>
+                                        <div class="input_wrap">
+                                            <label for="country">CIN</label>
+                                            <input type="text" name="inputcin">
+                                        </div>
+                                        <div class="input_wrap">
+                                            <label for="country">Type</label>
+                                            <input type="text" name="inputtype">
+                                        </div>
+                                        <div class="input_wrap">
+                                            <label for="country">Mot de passe</label>
+                                            <input type="text" name="inputmdp">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="button">
+                                        <a href="#"><input type="submit" name="submit" value="Ajouter" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

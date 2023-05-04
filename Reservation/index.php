@@ -25,13 +25,13 @@ include_once("../connexion.php");
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="../Utilisateur/index.php">
             <i class='bx bx-box' ></i>
             <span class="links_name">Utilisateur</span>
           </a>
         </li>
         <li>
-          <a href="../Reservation/index.php">
+          <a href="#"  class="active">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Reservation</span>
           </a>
@@ -62,12 +62,8 @@ include_once("../connexion.php");
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Dashboard</span>
       </div>
-      <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search' ></i>
-      </div>
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
+        <img src="../fonts/user-solid.svg" alt="">
         <span class="admin_name">Prem Shahi</span>
         <i class='bx bx-chevron-down' ></i>
       </div>
@@ -76,9 +72,10 @@ include_once("../connexion.php");
     <div class="home-content" style="width: 147%!important;">
     <?php
 $pdo = new connect();
-$query = "select * from utilisateur";
+$query = "select * from utilisateur,reservation, chambre where utilisateur.id=reservation.idUtilisateur and chambre.id=reservation.idChambre";
 $pdostmt = $pdo->prepare($query);
 $pdostmt->execute();
+
 ?>
 
       <div class="sales-boxes" >
@@ -101,6 +98,10 @@ $pdostmt->execute();
                 <th>CIN</th>
                 <th>Numero</th>
                 <th>type</th>
+                <th>Date Debut</th>
+                <th>Date Fin</th>
+                <th>numero Chambre</th>
+                <th>Prix</th>
                 <th>Operations</th>
             </tr>
             <?php
@@ -116,6 +117,10 @@ $pdostmt->execute();
                 <td><?php echo $value["cin"]; ?></td>
                 <td><?php echo $value["numero"]; ?></td>
                 <td><?php echo $value["type"]; ?></td>
+                <td><?php echo $value["dateDebut"]; ?></td>
+                <td><?php echo $value["dateFin"]; ?></td>
+                <td><?php echo $value["num"]; ?></td>
+                <td><?php echo $value["prix"]; ?></td>
                 <td><a href="update.php?id=<?php echo $value["id"] ?>"><img src="../fonts/pen-to-square-solid.svg"  style="width:25px;heigth:25px"alt=""></a> <a href="delete.php?id=<?php echo $value["id"] ?>"><img src="../fonts/trash-solid.svg"  style="width:20px;heigth:20px"alt=""></a></td>
                 <td></td>
             </tr>
