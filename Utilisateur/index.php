@@ -85,10 +85,15 @@ $pdostmt->execute();
         <div class="recent-sales box">
           <div class="title">Utilisateur</div>
          <a href="create.php"><img src="../fonts/user-plus-solid.svg" alt="" style="width:30px;heigth:30px"></a>
+
+         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+
+
           <div class="sales-details">
             
-           <table>
-            <tr>
+           <table  id="myTable">
+            <tr class="header">
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -135,6 +140,28 @@ sidebarBtn.onclick = function() {
   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
 }else
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
 }
  </script>
 
