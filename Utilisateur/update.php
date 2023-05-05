@@ -137,7 +137,7 @@ if(!empty($_GET["id"])){
                                     </div><br>
 
                                     <div class="button">
-                                        <a href="#"><input type="submit" name="submit" value="Modifier" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
+                                        <a href="#"><input type="submit" name="submit" value="Modify" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
                                         </a>
                                     </div>
                                 </form>

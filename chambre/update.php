@@ -40,7 +40,7 @@ if (!empty($_GET["id"])) {
             <li>
                 <a href="../utilisateur/index.php">
                     <i class='bx bx-box'></i>
-                    <span class="links_name">Utilisateur</span>
+                    <span class="links_name">User</span>
                 </a>
             </li>
             <li>
@@ -53,7 +53,7 @@ if (!empty($_GET["id"])) {
                 <a href="index.php" class="active">
 
                     <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Chambre</span>
+                    <span class="links_name">Room</span>
                 </a>
             </li>
             <li>
@@ -85,19 +85,29 @@ if (!empty($_GET["id"])) {
 
         <div class="home-content" style="width: 147%!important;">
             <?php
+            $pdo = new connect();
+            if(isset($_POST['submit'])){
+                if(!empty($_POST['categorie'])) {
+                $selected = $_POST['categorie'];
+                // var_dump($selected);
+            $querycategorieid="select id from categorie where type="."'".$selected."'";
+            // var_dump($querycategorieid);
+            $pdostmtcategorieid = $pdo->prepare($querycategorieid);
+            $pdostmtcategorieid->execute();
+            $categorieid = $pdostmtcategorieid->fetchAll(PDO::FETCH_ASSOC);
+            $categorieidd = $categorieid[0]["id"];
             if (!empty($_POST)) {
-                $query = "update chambre set num=:num,prix=:prix where id=:id";
+                $query = "update chambre set num=:num,prix=:prix,idCategorie=$categorieidd where id=:id";
                 $pdostmt = $pdo->prepare($query);
                 $pdostmt->execute(["num" => $_POST["inputnum"], "prix" => $_POST["inputprix"], "id" => $_POST["inputid"]]);
                 $pdostmt->closeCursor(); //liberer pdostmt
                 header("location:index.php"); //redirection vers test.php
-            }
+            }}}
             ?>
-
-
+           
             <div class="sales-boxes">
                 <div class="recent-sales box">
-                    <div class="title">Modifier Chambre</div>
+                    <div class="title"> Modify</div>
                     <br>
                     <div class="sales-details">
 
@@ -143,15 +153,7 @@ if (!empty($_GET["id"])) {
                                         </a>
                                     </div>
                                 </form>
-                                <?php
-
-                                if (!empty($_POST)) {
-                                    $query = "update chambre set num=:num, prix=:prix where id=:id";
-                                    $pdostmt = $pdo->prepare($query);
-                                    $pdostmt->execute(["num" => $_POST["inputnum"], "prix" => $_POST["inputprix"], "id" => $_POST["inputid"]]);
-                                    header("location:index.php");
-                                }
-                                ?>
+                       
                             </div>
                         </div>
                     </div>

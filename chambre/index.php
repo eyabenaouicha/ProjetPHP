@@ -75,7 +75,7 @@ include_once("../connexion.php");
     <div class="home-content" style="width: 147%!important;">
       <?php
       $pdo = new connect();
-      $query = "select * from chambre";
+      $query = "select chambre.id as idc, categorie.id as idca, prix, type,num from chambre, categorie where chambre.idCategorie=categorie.id";
       $pdostmt = $pdo->prepare($query);
       $pdostmt->execute();
       ?>
@@ -94,6 +94,7 @@ include_once("../connexion.php");
               <tr class="header">
                 <th>Id</th>
                 <th>Room Number</th>
+                <th>Categorie</th>
                 <th>Price</th>
 
               </tr>
@@ -103,10 +104,11 @@ include_once("../connexion.php");
               foreach ($ligne as $value) {
               ?>
                 <tr>
-                  <td> <?php echo $value["id"]; ?></td>
+                  <td> <?php echo $value["idc"]; ?></td>
                   <td><?php echo $value["num"]; ?></td>
+                  <td><?php echo $value["type"]; ?></td>
                   <td><?php echo $value["prix"]; ?></td>
-                  <td><a href="update.php?id=<?php echo $value["id"] ?>"><img src="../fonts/pen-to-square-solid.svg" style="width:25px;heigth:25px" alt=""></a> <a href="delete.php?id=<?php echo $value["id"] ?>"><img src="../fonts/trash-solid.svg" style="width:20px;heigth:20px" alt=""></a></td>
+                  <td><a href="update.php?id=<?php echo $value["idc"] ?>"><img src="../fonts/pen-to-square-solid.svg" style="width:25px;heigth:25px" alt=""></a> <a href="delete.php?id=<?php echo $value["idc"] ?>"><img src="../fonts/trash-solid.svg" style="width:20px;heigth:20px" alt=""></a></td>
                   <td></td>
                 </tr>
               <?php } ?>
