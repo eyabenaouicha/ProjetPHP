@@ -87,12 +87,7 @@ if(!empty($_POST["inputtype"])){
         </nav>
 
         <div class="home-content" style="width: 147%!important;">
-            <?php
-            $pdo = new connect();
-            $query = "select * from categorie";
-            $pdostmt = $pdo->prepare($query);
-            $pdostmt->execute();
-            ?>
+         
 
             <div class="sales-boxes">
                 <div class="recent-sales box">
@@ -102,12 +97,12 @@ if(!empty($_POST["inputtype"])){
 
                         <div class="wrapper">
                             <div class="registration_form">
-                                        <form>
+                                        <form action="create.php" method="post">
                                             <div class="form_wrap">
                                                 <div class="input_grp">
                                                         <div class="input_wrap">
-                                                            <label for="fname">First Name</label>
-                                                            <input type="text" id="fname">
+                                                            <label for="ftype">Type</label>
+                                                            <input type="text" id="ftype" name="inputtype">
                                                         </div>
                                                            
                                                 </div>
@@ -117,7 +112,7 @@ if(!empty($_POST["inputtype"])){
                                             </div><br>
                                   
                     <div class="button">
-                        <a href="#"><input type="submit" value="Register Now" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
+                        <a href="#"><input type="submit" value="Ajouter" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
 </a>
                     </div>
                     </form>

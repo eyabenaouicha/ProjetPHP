@@ -85,8 +85,8 @@ include_once("../connexion.php");
 
       <div class="sales-boxes" >
         <div class="recent-sales box">
-          <div class="title">Categorie</div>
-         <a href="create.php"><img src="../fonts/user-plus-solid.svg" alt="" style="width:30px;heigth:30px"></a>
+          <div class="title"> <a href="create.php"><img src="../fonts/plus-solid.svg" alt="" style="width:20px;heigth:20px"></a>
+Categorie</div>
 
          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for types..">
 
