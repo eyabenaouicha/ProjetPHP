@@ -27,7 +27,7 @@ include_once("../connexion.php");
         <li>
           <a href="#" class="active">
             <i class='bx bx-box' ></i>
-            <span class="links_name">Utilisateur</span>
+            <span class="links_name">User</span>
           </a>
         </li>
         <li>
@@ -39,7 +39,7 @@ include_once("../connexion.php");
         <li>
           <a href="../chambre/index.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Chambre</span>
+            <span class="links_name">Room</span>
           </a>
         </li>
         <li>
@@ -84,7 +84,7 @@ $pdostmt->execute();
       <div class="sales-boxes" >
         <div class="recent-sales box">
           <br>
-          <div class="title"> <a href="create.php" ><img src="../fonts/plus-solid.svg"  style="width:20px;heigth:20px"alt=""></a>  Utilisateur</div>
+          <div class="title"> <a href="create.php" ><img src="../fonts/plus-solid.svg"  style="width:20px;height:20px"alt=""></a>  User</div>
          <br>
          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
@@ -95,11 +95,11 @@ $pdostmt->execute();
            <table  id="myTable">
             <tr class="header">
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
+                <th>Family Name</th>
+                <th>Name</th>
+                <th>Email Adress</th>
                 <th>CIN</th>
-                <th>Numero</th>
+                <th>Phone Number</th>
                 <th>type</th>
                 <th>Operations</th>
             </tr>

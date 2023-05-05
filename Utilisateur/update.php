@@ -84,11 +84,10 @@ if(!empty($_GET["id"])){
 
         <div class="home-content" style="width: 147%!important;">
             <?php
-            if (!empty($_POST["inputnom"]) && !empty($_POST["inputprenom"]) && !empty($_POST["inputemail"])&& !empty($_POST["inputemail"])&& !empty($_POST["inputnumero"])&& !empty($_POST["inputcin"])&& !empty($_POST["inputtype"])&& !empty($_POST["inputmdp"])) {
-                $pdo = new connect();
-                $query = "insert into utilisateur(nom,prenom,email,numero,cin,type,mdp) values(:nom,:prenom,:email,:numero,:cin,:type,:mdp)";
+            if (!empty($_POST)) {
+                $query = "update utilisateur set nom=:nom,prenom=:prenom,email=:email,numero=:numero,cin=:cin,type=:type,mdp=:mdp where id=:id";
                 $pdostmt = $pdo->prepare($query);
-                $pdostmt->execute(["nom" => $_POST["inputnom"], "prenom" => $_POST["inputprenom"], "email" => $_POST["inputemail"], "numero" => $_POST["inputnumero"], "cin" => $_POST["inputcin"], "type" => $_POST["inputtype"], "mdp" => $_POST["inputmdp"]]);
+                $pdostmt->execute(["nom" => $_POST["inputnom"], "prenom" => $_POST["inputprenom"], "email" => $_POST["inputemail"], "numero" => $_POST["inputnumero"], "cin" => $_POST["inputcin"], "type" => $_POST["inputtype"], "mdp" => $_POST["inputmdp"],"id"=>$_POST["inputid"]]);
                 $pdostmt->closeCursor(); //liberer pdostmt
                 header("location:index.php"); //redirection vers test.php
             }
