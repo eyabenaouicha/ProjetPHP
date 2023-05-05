@@ -30,7 +30,7 @@ include_once("../connexion.php");
             <li>
                 <a href="index.php" class="active">
                     <i class='bx bx-box'></i>
-                    <span class="links_name">Utilisateur</span>
+                    <span class="links_name">User</span>
                 </a>
             </li>
             <li>
@@ -42,7 +42,7 @@ include_once("../connexion.php");
             <li>
                 <a href="../chambre/index.php">
                     <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Chambre</span>
+                    <span class="links_name">Room</span>
                 </a>
             </li>
             <li>
@@ -87,7 +87,7 @@ include_once("../connexion.php");
 
             <div class="sales-boxes">
                 <div class="recent-sales box">
-                    <div class="title">Ajouter Utilisateur</div>
+                    <div class="title">Add User</div>
                     <br>
                     <div class="sales-details">
 
@@ -97,20 +97,20 @@ include_once("../connexion.php");
                                     <div class="form_wrap">
                                         <div class="input_grp">
                                             <div class="input_wrap">
-                                                <label for="fname">Nom</label>
+                                                <label for="fname">Family Name</label>
                                                 <input type="text" name="inputnom">
                                             </div>
                                             <div class="input_wrap">
-                                                <label for="lname">Prenom</label>
+                                                <label for="lname">Name</label>
                                                 <input type="text" name="inputprenom">
                                             </div>
                                         </div>
                                         <div class="input_wrap">
-                                            <label for="email">Email Address</label>
+                                            <label for="email">Email Adress</label>
                                             <input type="text" name="inputemail">
                                         </div>
                                         <div class="input_wrap">
-                                            <label for="city">Numero</label>
+                                            <label for="city">Phone Number</label>
                                             <input type="text" name="inputnumero">
                                         </div>
                                         <div class="input_wrap">
@@ -122,13 +122,13 @@ include_once("../connexion.php");
                                             <input type="text" name="inputtype">
                                         </div>
                                         <div class="input_wrap">
-                                            <label for="country">Mot de passe</label>
+                                            <label for="country">Password</label>
                                             <input type="text" name="inputmdp">
                                         </div>
                                     </div><br>
 
                                     <div class="button">
-                                        <a href="#"><input type="submit" name="submit" value="Ajouter" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
+                                        <a href="#"><input type="submit" name="submit" value="Add" class="submit_btn" style="background: #0d6bd700;border:none;color:white">
                                         </a>
                                     </div>
                                 </form>

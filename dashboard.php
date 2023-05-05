@@ -27,7 +27,7 @@ include_once("connexion.php");
         <li>
           <a href="Utilisateur/index.php">
             <i class='bx bx-box' ></i>
-            <span class="links_name">Utilisateur</span>
+            <span class="links_name">User</span>
           </a>
         </li>
         <li>
@@ -39,7 +39,7 @@ include_once("connexion.php");
         <li>
           <a href="chambre/index.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Chambre</span>
+            <span class="links_name">Room</span>
           </a>
         </li>
         <li>
@@ -113,7 +113,7 @@ $countCategorie = $pdostmtCategorie->fetchAll(PDO::FETCH_ASSOC);
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Utilisateur</div>
+            <div class="box-topic">User</div>
             <div class="number"><?php echo $countUser[0]["countUser"]; ?></div>
             <!-- <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
@@ -135,7 +135,7 @@ $countCategorie = $pdostmtCategorie->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Chambre</div>
+            <div class="box-topic">Room</div>
             <div class="number"><?php echo $countChambre[0]["countChambre"]; ?></div>
             <!-- <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
@@ -213,7 +213,7 @@ $countCategorie = $pdostmtCategorie->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
         <div class="top-sales box">
-          <div class="title">Top Seling Product</div>
+          <div class="title">Top Selling Products</div>
           <ul class="top-sales-details">
             <li>
             <a href="#">
