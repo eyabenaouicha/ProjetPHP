@@ -9,12 +9,41 @@ $pdostmtc = $pdo->prepare($c);
 $pdostmtc->execute();
 
 if (!empty($_POST)) {
-  $queryadd = "insert into reservation(idUtilisateur,idChambre,dateDebut,dateFin,formule,idFacture,etat) values(:idUtilisateur,:idChambre,:iddateDebut,:dateFin,:formule,:facture,:etat)";
+  if ($_POST["inputformule"] == "pensionComplete") {
+    $prixFormule = 150;
+  } else if ($_POST["inputformule"] == "demiPension") {
+    $prixFormule = 100;
+  } else if ($_POST["inputformule"] == "bedBreakfast") {
+    $prixFormule = 80;
+  } else if ($_POST["inputformule"] == "bedOnly") {
+    $prixFormule = 50;
+  }
+  $querypc = "select prix from chambre where id=:id";
+  $pdostmtpc = $pdo->prepare($querypc);
+  $pdostmtpc->execute(["id" => $_POST["inputChambre"]]);
+  $prixpc = $pdostmtpc->fetchAll(PDO::FETCH_ASSOC);
+  // var_dump(floatval($prixpc[0]["prix"]));
+  $prixF = $prixFormule + floatval($prixpc[0]["prix"]);
+  $queryFact = "insert into facture(prix) values (:prix)";
+  $pdostmtFact = $pdo->prepare($queryFact);
+  $pdostmtFact->execute(["prix" => $prixF]);
+  $n = "select count(*) as countf from facture";
+  $pdostmtn = $pdo->prepare($n);
+  $pdostmtn->execute();
+  $countf = $pdostmtn->fetchAll(PDO::FETCH_ASSOC);
+  // var_dump($countf[0]["countf"]);
+  $fact = "select * from facture";
+  $pdostmtfact = $pdo->prepare($fact);
+  $pdostmtfact->execute();
+  $facture = $pdostmtfact->fetchAll(PDO::FETCH_ASSOC);
+  $idf = $facture[$countf[0]["countf"] - 1]["id"];
+  // var_dump($facture[$countf[0]["countf"]-1]["id"]);
+  $queryadd = "insert into reservation(idUtilisateur,idChambre,dateDebut,dateFin,formule,idFacture,etat) values(:idUtilisateur,:idChambre,:dateDebut,:dateFin,:formule,:facture,:etat)";
   $pdostmtadd = $pdo->prepare($queryadd);
   // var_dump($_POST["inputUtilisateur"],$_POST["inputChambre"],$_POST["inputdateDebut"],$_POST["inputdateFin"],$_POST["inputetat"],$_POST["inputidFacture"],$_POST["inputformule"]);
-  $pdostmtadd->execute(["idUtilisateur" => $_POST["inputUtilisateur"], "idChambre" => $_POST["inputChambre"], "iddateDebut" => $_POST["inputdateDebut"], "dateFin" => $_POST["inputdateFin"], "formule" => $_POST["inputformule"], "facture" => $_POST["inputidFacture"], "etat" => $_POST["inputetat"]]);
+  $pdostmtadd->execute(["idUtilisateur" => $_POST["inputUtilisateur"], "idChambre" => $_POST["inputChambre"], "dateDebut" => $_POST["inputdateDebut"], "dateFin" => $_POST["inputdateFin"], "formule" => $_POST["inputformule"], "facture" => $idf, "etat" => $_POST["inputetat"]]);
   $pdostmtadd->closeCursor();
-  // header("location:index.php"); 
+  header("location:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -189,7 +218,6 @@ if (!empty($_POST)) {
                   <select id="ftype" name="inputChambre">
                     <?php
                     $ligne = $pdostmtcc->fetchAll(PDO::FETCH_ASSOC);
-                    // var_dump($ligne);
                     foreach ($ligne as $value) {
                     ?>
                       <option value="<?php echo $value["id"]; ?>" name="inputidChambre"><?php echo $value["id"]; ?></option>
@@ -207,19 +235,21 @@ if (!empty($_POST)) {
                 <div class="input_wrap">
                   <label for="ftype">formule</label>
                   <select id="ftype" name="inputformule">
+                    <option value="" disabled selected>Choose option</option>
                     <option value="pensionComplete">pensionComplete</option>
                     <option value="demiPension">demiPension</option>
                     <option value="bedBreakfast">bedBreakfast</option>
                     <option value="bedOnly">bedOnly</option>
                   </select>
                 </div>
-                <div class="input_wrap">
+                <!-- <div class="input_wrap">
                   <label for="ftype">facture</label>
                   <input type="text" id="ftype" name="inputidFacture">
-                </div>
+                </div> -->
                 <div class="input_wrap">
                   <label for="ftype">etat</label>
                   <select id="ftype" name="inputetat">
+                    <option value="" disabled selected>Choose option</option>
                     <option value="En Attente">En Attente</option>
                     <option value="confirmer">confirmer</option>
                     <option value="annuler">annuler</option>
