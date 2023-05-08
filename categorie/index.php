@@ -31,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <li>
           <a href="../Utilisateur/index.php">
             <i class='bx bx-box'></i>
-            <span class="links_name">Utilisateur</span>
+            <span class="links_name">User</span>
           </a>
         </li>
         <li>
@@ -43,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <li>
           <a href="../chambre/index.php">
             <i class='bx bx-pie-chart-alt-2'></i>
-            <span class="links_name">Chambre</span>
+            <span class="links_name">Room</span>
           </a>
         </li>
         <li>

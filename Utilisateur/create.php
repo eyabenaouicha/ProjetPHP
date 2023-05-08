@@ -140,51 +140,53 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 </div>
 
             </div> -->
-                <div class="wrapper" style="margin-left: 20%;">
-                    <div class="title">
-                        Add User
-                    </div>
-                    <div class="form">
-                        <div class="inputfield">
-                            <label>First Name</label>
-                            <input type="text" class="input">
+                <form action="create.php" method="post">
+                    <div class="wrapper" style="margin-left: 20%;">
+                        <div class="title">
+                            Add User
                         </div>
-                        <div class="inputfield">
-                            <label>Last Name</label>
-                            <input type="text" class="input">
-                        </div>
-                        <div class="inputfield">
-                            <label>Email Address</label>
-                            <input type="text" class="input">
-                        </div>
-                        <div class="inputfield">
-                            <label>Phone Number</label>
-                            <input type="text" class="input">
-                        </div>
-                        <div class="inputfield">
-                            <label>ID Number</label>
-                            <input type="text" class="input">
-                        </div>
-                        <div class="inputfield">
-                            <label>Type</label>
-                            <div class="custom_select">
-                                <select>
-                                    <option value="">Select</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="client">Client</option>
-                                    <option value="equipe">Equipe</option>
-                                </select>
+                        <div class="form">
+                            <div class="inputfield">
+                                <label>First Name</label>
+                                <input type="text" name="inputnom" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <label>Last Name</label>
+                                <input type="text" name="inputprenom" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <label>Email Address</label>
+                                <input type="text" name="inputemail" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <label>Phone Number</label>
+                                <input type="text" name="inputnumero" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <label>ID Number</label>
+                                <input type="text" name="inputcin" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <label>Type</label>
+                                <div class="custom_select">
+                                    <select name="inputtype">
+                                        <option value="">Select</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="client">Client</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="inputfield">
+                                <label>Password</label>
+                                <input type="password" name="inputmdp" class="input">
+                            </div>
+                            <div class="inputfield">
+                                <a href="#"><input type="submit" name="submit" value="Add User" class="btn">
+                                </a>
                             </div>
                         </div>
-                        <div class="inputfield">
-                            <label>Password</label>
-                            <input type="password" class="input">
-                        </div>
-                        <div class="inputfield">
-                            <input type="submit" value="Register" class="btn">
-                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
 
