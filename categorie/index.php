@@ -121,9 +121,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <?php } ?>
               </table>
             </div>
-            <div class="button">
-              <a href="#">See All</a>
-            </div>
+            
           </div>
 
         </div>
