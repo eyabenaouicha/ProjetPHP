@@ -11,9 +11,59 @@
 </head>
 
 <body>
-    <?php
-    session_start();
+<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+		<?php
     include_once("../connexion.php");
+
+    // $nom = $_POST['inputnom'];
+    // $prenom = $_POST['inputprenom'];
+    // $email = $_POST['inputemail'];
+    // $num = $_POST['inputnumero'];
+    // $type = $_POST['inputtype'];
+    // $cin = $_POST['inputcin'];
+    // $mdp = $_POST['inputmdp'];
+    // $data = "nom=" . $nom . "&prenom=" . $prenom . "&email=" . $email . "&num=" . $num . "&prenom=" . $type . "&type=" . $cin . "&cin=";
+    // if (empty($nom)) {
+    //     $em  = "Family name is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // } else if (empty($prenom)) {
+    //     $em = "User name is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // } else if (empty($email)) {
+    //     $em = "Email adress is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // } else if (empty($num)) {
+    //     $em = "User Number is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // } else if (empty($cin)) {
+    //     $em = "User CIN is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // } else if (empty($mdp)) {
+    //     $em = "User Password is required";
+    //     header("Location: ../index.php?error=$em&$data");
+    //     exit;
+    // }else{
+    //     echo "nice";
+    // }
+
+	    if (!empty($_POST["inputnomreg"]) && !empty($_POST["inputprenomreg"]) && !empty($_POST["inputemailreg"])&& !empty($_POST["inputnumeroreg"]) && !empty($_POST["inputcinreg"]) && !empty($_POST["inputmdpreg"])) {
+        $pdo = new connect();
+        // $pass = password_hash($_POST["inputmdp"], PASSWORD_DEFAULT);
+        $pass = $_POST["inputmdpreg"];
+        $query = "insert into utilisateur(nom,prenom,email,numero,cin,type,mdp) values(:nom,:prenom,:email,:numero,:cin,:type,:mdp)";
+        $pdostmt = $pdo->prepare($query);
+        $pdostmt->execute(["nom" => $_POST["inputnomreg"], "prenom" => $_POST["inputprenomreg"], "email" => $_POST["inputemailreg"], "numero" => $_POST["inputnumeroreg"], "cin" => $_POST["inputcinreg"], "type" => "client", "mdp" => $pass]);
+		$pdostmt->closeCursor();
+        // header("location:login.php"); 
+    }
+
+	session_start();
     if (!empty($_POST["inputemail"])&& !empty($_POST["inputmdp"])){
         $pdo = new connect();
         $uemail = $_POST['inputemail'];
@@ -49,20 +99,31 @@ if($stmt->rowCount() >0){
                 header("Location: ../index.html");
             }
             
-            echo "Logged in";
        
  } }}}
     ?>
-    <div class="form-container">
-        <form  method="post">
-            <h3>login now</h3>
-            <input type="email" name="inputemail" required placeholder="enter your email">
-            <input type="password" name="inputmdp" required placeholder="enter your password">
-            <input type="submit" name="submit" value="Login Now" class="form-btn">
-            <p>You don't have an account? <a href="register.php"> Register</a></p>
+		<div class="signup">
+			<form action="maryouma.php" method="post">
+				<label for="chk" aria-hidden="true">Register now!</label>
+				<input type="text" name="inputnomreg" required placeholder="enter your first Name">
+				<input type="text" name="inputprenomreg" required placeholder="enter your last name">
+				<input type="email" name="inputemailreg" required placeholder="enter your Email">
+				<input type="text" name="inputnumeroreg" required placeholder="enter your Number">
+				<input type="text" name="inputcinreg" required placeholder="enter your CIN">
+				<input type="password" name="inputmdpreg" required placeholder="enter your password">
+				<!-- <input type="submit" name="submit" value="register now" > -->
+				<button type="submit" name="submit">Register</button>
+			</form>
+		</div>
 
-        </form>
-    </div>
+			<div class="login">
+				<form method="post">
+					<label for="chk" aria-hidden="true">Login </label>
+					<input type="email" name="inputemail" required placeholder="enter your email">
+                    <input type="password" name="inputmdp" required placeholder="enter your password">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
 </body>
-
 </html>
