@@ -1,74 +1,4 @@
-/* *{
-    font-family: 'Poppins', sans-serif;
- margin:0; padding:0;
- box-sizing: border-box;
- outline: none; border:none;
- text-decoration: none;
-
-}
-.container{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:20px;
-    padding-bottom: 60px;
-} 
-.form-container{
-    min-height: 100vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:20px;
-    padding-bottom: 60px;
-    background:#eee;
-} 
-.form-container form {
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  background: #fff;
-  text-align: center;
-  width: 50%;
-}
-.form-container form h3 {
-  font-size: 30px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.form-container form input,
-.form-containen form select {
-  width: 100%;
-  padding: 10px 15px;
-  font-size: 17px;
-  margin: 8px 0;
-  background: #eee;
-  border-radius: 5px;
-}
-.form-container form select option {
-  background: #fff;
-}
-form-container form .form-btn {
-  background: #fbd0d9;
-  color: crimson;
-  text-transform: capitalize;
-  font-size: 20px;
-  cursor: pointer;
-}
-.form-container form .form-btn:hover {
-  background: crimson;
-  color: #fff;
-}
-.form-container form p{
-    margin-top: 10px;
-    font-size: 20px;
-    color:#333;
- }
- .form-container form p a{
-    color:crimson
- } */
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
  body{
 	margin: 0;
@@ -78,10 +8,10 @@ form-container form .form-btn {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	background: linear-gradient(to bottom, #0f332c, #37a38e, #27a78d);
 }
 .main{
-	width: 350px;
+	width: 500px;
 	height: 500px;
 	background: red;
 	overflow: hidden;
@@ -126,7 +56,7 @@ button{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	background: #358373;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 15px;
@@ -137,7 +67,7 @@ button{
 	cursor: pointer;
 }
 button:hover{
-	background: #6d44b8;
+	background: #226356;
 }
 .login{
 	height: 460px;
@@ -147,7 +77,7 @@ button:hover{
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #573b8a;
+	color: #1abc9c;
 	transform: scale(.6);
 }
 

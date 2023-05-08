@@ -103,14 +103,14 @@ if($stmt->rowCount() >0){
  } }}}
     ?>
 		<div class="signup">
-			<form action="maryouma.php" method="post">
+			<form action="login.php" method="post">
 				<label for="chk" aria-hidden="true">Register now!</label>
-				<input type="text" name="inputnomreg" required placeholder="enter your first Name">
-				<input type="text" name="inputprenomreg" required placeholder="enter your last name">
-				<input type="email" name="inputemailreg" required placeholder="enter your Email">
-				<input type="text" name="inputnumeroreg" required placeholder="enter your Number">
-				<input type="text" name="inputcinreg" required placeholder="enter your CIN">
-				<input type="password" name="inputmdpreg" required placeholder="enter your password">
+				<input type="text" name="inputnomreg" required placeholder="Enter your first Name">
+				<input type="text" name="inputprenomreg" required placeholder="Enter your last name">
+				<input type="email" name="inputemailreg" required placeholder="Enter your Email">
+				<input type="text" name="inputnumeroreg" required placeholder="Enter your Number">
+				<input type="text" name="inputcinreg" required placeholder="Enter your CIN">
+				<input type="password" name="inputmdpreg" required placeholder="Enter your password">
 				<!-- <input type="submit" name="submit" value="register now" > -->
 				<button type="submit" name="submit">Register</button>
 			</form>
@@ -119,8 +119,8 @@ if($stmt->rowCount() >0){
 			<div class="login">
 				<form method="post">
 					<label for="chk" aria-hidden="true">Login </label>
-					<input type="email" name="inputemail" required placeholder="enter your email">
-                    <input type="password" name="inputmdp" required placeholder="enter your password">
+					<input type="email" name="inputemail" required placeholder="Enter your email">
+                    <input type="password" name="inputmdp" required placeholder="Enter your password">
 					<button>Login</button>
 				</form>
 			</div>
