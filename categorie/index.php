@@ -52,6 +52,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             <span class="links_name">Categorie</span>
           </a>
         </li>
+        <li>
+          <a href="../Facture/index.php">
+          <i class='bx bx-box'></i>
+            <span class="links_name">Facture</span>
+          </a>
+        </li>
         <li class="log_out">
           <a href="../login/logout.php">
             <i class='bx bx-log-out'></i>
