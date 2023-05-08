@@ -841,7 +841,7 @@ blockquote p {
 ********************************************************* */
 
 .blog-post-wrap, .blog-wrap-single {
-  padding-top: 6em;
+  padding-top: 5em;
   text-align: center;
 }
 
@@ -867,7 +867,7 @@ blockquote p {
 
 .post-wrap .post-meta {
   font-size: .8em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 .post-wrap .post-meta li {
