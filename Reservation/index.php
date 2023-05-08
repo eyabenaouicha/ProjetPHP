@@ -75,7 +75,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
     <div class="home-content" style="width: 147%!important;">
       <?php
       $pdo = new connect();
-      $query = "select reservation.id as idr, utilisateur.id as idu, chambre.id as idc, nom,prenom,email,cin,numero,dateDebut,dateFin,num,prix,utilisateur.type as typeu, categorie.type as typec
+      $query = "select reservation.id as idr, utilisateur.id as idu, chambre.id as idc, formule,nom,prenom,email,cin,numero,dateDebut,dateFin,num,prix,utilisateur.type as typeu, categorie.type as typec
   from utilisateur,reservation,categorie, chambre where utilisateur.id=reservation.idUtilisateur and chambre.id=reservation.idChambre and categorie.id=chambre.idCategorie";
       $pdostmt = $pdo->prepare($query);
       $pdostmt->execute();
@@ -98,12 +98,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
                 <!-- <th>Id</th> -->
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Email</th>
+                <!-- <th>Email</th> -->
                 <!-- <th>CIN</th> -->
                 <th>Numero</th>
                 <th>type</th>
                 <th>Date Debut</th>
                 <th>Date Fin</th>
+                <th>Formule</th>
                 <th>Numero Chambre</th>
                 <th>Type Chambre</th>
                 <th>Prix</th>
@@ -117,11 +118,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
                 <tr>
                   <td><?php echo $value["nom"]; ?></td>
                   <td><?php echo $value["prenom"]; ?></td>
-                  <td><?php echo $value["email"]; ?></td>
                   <td><?php echo $value["numero"]; ?></td>
                   <td><?php echo $value["typeu"]; ?></td>
                   <td><?php echo $value["dateDebut"]; ?></td>
                   <td><?php echo $value["dateFin"]; ?></td>
+                  <td><?php echo $value["formule"]; ?></td>
                   <td><?php echo $value["num"]; ?></td>
                   <td><?php echo $value["typec"]; ?></td>
                   <td><?php echo $value["prix"]; ?></td>
