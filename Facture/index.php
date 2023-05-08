@@ -96,14 +96,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
                             <table id="myTable">
                                 <tr class="header">
-                                    <th>Facture</th>
-                                    <th>Numero Chambre</th>
-                                    <th>Type Chambre</th>
-                                    <th>Formule</th>
-                                    <th>Nom</th>
-                                    <th>Prenom</th>
+                                    <th>Invoice</th>
+                                    <th>Room number</th>
+                                    <th>Room type</th>
+                                    <th>Pension</th>
+                                    <th>Last name</th>
+                                    <th>First name</th>
                                     <th>CIN</th>
-                                    <th>type</th>
+                                    <th>Type</th>
                                 </tr>
                                 <?php
                                 $ligne = $pdostmt->fetchAll(PDO::FETCH_ASSOC);
