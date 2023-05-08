@@ -65,10 +65,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Dashboard</span>
       </div>
-      <div class="search-box">
+      <!-- <div class="search-box">
         <input type="text" placeholder="Search...">
         <i class='bx bx-search' ></i>
-      </div>
+      </div> -->
       <div class="profile-details">
       <img src="../fonts/user-solid.svg" alt="" style="height: 28px; width: 28px;">
         <span class="admin_name"><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></span>
@@ -88,7 +88,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
         <div class="recent-sales box">
           <div class="title"> <a href="create.php"><img src="../fonts/plus-solid.svg" alt="" style="width:20px;heigth:20px"></a>
 Categorie</div>
-
+<br>
          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for types..">
 
 
