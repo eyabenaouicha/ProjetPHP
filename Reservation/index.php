@@ -52,6 +52,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
           <span class="links_name">Categorie</span>
         </a>
       </li>
+      <li>
+          <a href="../Facture/index.php">
+          <i class='bx bx-box'></i>
+            <span class="links_name">Facture</span>
+          </a>
+        </li>
       <li class="log_out">
         <a href="../login/logout.php">
           <i class='bx bx-log-out'></i>
@@ -96,18 +102,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
             <table id="myTable">
               <tr class="header">
                 <!-- <th>Id</th> -->
-                <th>Nom</th>
-                <th>Prenom</th>
+                <th>Last name</th>
+                <th>First name</th>
                 <!-- <th>Email</th> -->
                 <!-- <th>CIN</th> -->
-                <th>Numero</th>
+                <th>Phone number</th>
                 <th>type</th>
-                <th>Date Debut</th>
-                <th>Date Fin</th>
-                <th>Formule</th>
-                <th>Numero Chambre</th>
-                <th>Type Chambre</th>
-                <th>Prix</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Pension</th>
+                <th>Room number</th>
+                <th>Room Type </th>
+                <th>Price</th>
                 <th>Operations</th>
               </tr>
               <?php
@@ -132,9 +138,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
               <?php } ?>
             </table>
           </div>
-          <div class="button">
-            <a href="#">See All</a>
-          </div>
+          
         </div>
 
       </div>

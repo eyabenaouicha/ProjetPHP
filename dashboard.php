@@ -186,9 +186,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <?php } ?>
               </table>
             </div><br>
-            <div class="button">
-              <a href="Reservation/index.php">See All</a>
-            </div>
+            
           </div>
           <div class="top-sales box">
             <div class="title">Rooms</div>
@@ -219,9 +217,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 </tr>
               <?php } ?>
               </table> <br>
-              <div class="button">
-            <a href="chambre/index.php">See All</a>
-          </div>
+             
           </div>
         </div>
       </div>
