@@ -77,9 +77,8 @@ session_start();
         <i class='bx bx-search' ></i>
       </div> -->
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name"><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?>
-</span>
+        <img src="fonts/user-solid.svg" alt="" style="height: 28px; width: 28px;">
+        <span class="admin_name"><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></span>
         <i class="fa-solid fa-user"></i>
       </div>
     </nav>

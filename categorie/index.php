@@ -1,6 +1,8 @@
 
 <?php
 include_once("../connexion.php");
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])){
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -50,7 +52,7 @@ include_once("../connexion.php");
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="../login/logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>
@@ -68,9 +70,8 @@ include_once("../connexion.php");
         <i class='bx bx-search' ></i>
       </div>
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">Prem Shahi</span>
-        <i class='bx bx-chevron-down' ></i>
+      <img src="../fonts/user-solid.svg" alt="" style="height: 28px; width: 28px;">
+        <span class="admin_name"><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></span>
       </div>
     </nav>
 
@@ -94,10 +95,11 @@ Categorie</div>
 
           <div class="sales-details">
             
-           <table  id="myTable">
+           <table  id="myTable" style="width: 50%!important;">
             <tr class="header">
             <th>id</th>
                 <th>type</th>
+                <th>Operations</th>
             </tr>
             <?php
         $ligne = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -107,8 +109,7 @@ Categorie</div>
                 <td> <?php echo $value["id"]; ?></td>
                 <td><?php echo $value["type"]; ?></td>
 
-                <td><a href="update.php?id=<?php echo $value["id"] ?>"> <img src="../fonts/pen-to-square-solid.svg"  style="width:20px;heigth:20px"alt=""></a></td>
-                <td><a href="delete.php?id=<?php echo $value["id"] ?>"> <img src="../fonts/trash-solid.svg"  style="width:20px;heigth:20px"alt=""></a></td>
+                <td><a href="update.php?id=<?php echo $value["id"] ?>"> <img src="../fonts/pen-to-square-solid.svg"  style="width:20px;heigth:20px"alt=""></a>   <a href="delete.php?id=<?php echo $value["id"] ?>"> <img src="../fonts/trash-solid.svg"  style="width:18px;heigth:18px"alt=""></a></td>
             </tr>
         <?php } ?>
            </table>
@@ -158,3 +159,8 @@ function myFunction() {
 
 </body>
 </html>
+<?php }else {
+     header ("Location: ../login/login.php");
+     exit;
+}
+   ?>

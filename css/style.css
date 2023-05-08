@@ -156,8 +156,8 @@ nav .search-box .bx-search{
   padding: 0 15px 0 2px;
 }
 nav .profile-details img{
-  height: 40px;
-  width: 40px;
+  height: 28px!important;
+  width: 26px!important;
   border-radius: 6px;
   object-fit: cover;
 }

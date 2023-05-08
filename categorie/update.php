@@ -1,6 +1,8 @@
 
 <?php
 include_once("../connexion.php");
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])){
 if(!empty($_GET["id"])){
     // var_dump($_GET["id"]);
     $pdo=new connect();
@@ -75,7 +77,7 @@ if(!empty($_POST)){
                 </a>
             </li>
             <li class="log_out">
-                <a href="#">
+                <a href="../login/logout.php">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </a>
@@ -177,3 +179,8 @@ if(!empty($_POST)){
 </body>
 
 </html>
+<?php }else {
+     header ("Location: ../login/login.php");
+     exit;
+}
+   ?>

@@ -1,6 +1,8 @@
 
 <?php 
 include_once("../connexion.php");
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])){
 if(!empty($_POST["inputtype"])){
     $pdo=new connect();
     $query="insert into categorie(type) values(:type)";
@@ -62,7 +64,7 @@ if(!empty($_POST["inputtype"])){
                 </a>
             </li>
             <li class="log_out">
-                <a href="#">
+                <a href="../login/logout.php">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </a>
@@ -80,9 +82,8 @@ if(!empty($_POST["inputtype"])){
                 <i class='bx bx-search'></i>
             </div>
             <div class="profile-details">
-                <img src="images/profile.jpg" alt="">
-                <span class="admin_name">Prem Shahi</span>
-                <i class='bx bx-chevron-down'></i>
+            <img src="../fonts/user-solid.svg" alt="" style="height: 28px; width: 28px;">
+        <span class="admin_name"><?=$_SESSION['nom']?> <?=$_SESSION['prenom']?></span>
             </div>
         </nav>
 
@@ -162,3 +163,8 @@ if(!empty($_POST["inputtype"])){
 </body>
 
 </html>
+<?php }else {
+     header ("Location: ../login/login.php");
+     exit;
+}
+   ?>
