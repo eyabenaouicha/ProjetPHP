@@ -97,6 +97,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
                 <th>Room Number</th>
                 <th>Categorie</th>
                 <th>Price</th>
+                <th>Operations</th>
 
               </tr>
               <?php
