@@ -82,7 +82,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             <span class="links_name">User</span>
           </a>
         </li>
-        
+
         <li>
           <a href="../chambre/index.php">
             <i class='bx bx-pie-chart-alt-2'></i>
@@ -96,14 +96,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
           </a>
         </li>
         <li>
-          <a href="index.php">
+          <a href="index.php" class="active">
             <i class='bx bx-list-ul'></i>
             <span class="links_name">Reservation</span>
           </a>
         </li>
         <li>
           <a href="../Facture/index.php">
-          <i class='bx bx-box'></i>
+            <i class='bx bx-box'></i>
             <span class="links_name">Facture</span>
           </a>
         </li>

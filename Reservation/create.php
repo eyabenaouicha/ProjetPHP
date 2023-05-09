@@ -94,7 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
           </a>
         </li>
         <li>
-          <a href="index.php">
+          <a href="index.php" class="active">
             <i class='bx bx-list-ul'></i>
             <span class="links_name">Reservation</span>
           </a>
