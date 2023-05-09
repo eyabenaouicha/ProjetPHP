@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
         <li>
           <a href="../categorie/index.php">
             <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Categorie</span>
+            <span class="links_name">Category</span>
           </a>
         </li>
         <li>

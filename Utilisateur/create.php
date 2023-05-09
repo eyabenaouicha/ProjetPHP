@@ -51,7 +51,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <li>
                     <a href="../categorie/index.php">
                         <i class='bx bx-coin-stack'></i>
-                        <span class="links_name">Categorie</span>
+                        <span class="links_name">Category</span>
                     </a>
                 </li>
                 <li class="log_out">
@@ -170,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                                 <label>Type</label>
                                 <div class="custom_select">
                                     <select name="inputtype">
-                                        <option value="">Select</option>
+                                        <option value="" disabled selected>Select</option>
                                         <option value="admin">Admin</option>
                                         <option value="client">Client</option>
                                     </select>

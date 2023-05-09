@@ -57,6 +57,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8">
     <title>THE 7 </title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/addReservation.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +79,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <li>
           <a href="../Utilisateur/index.php">
             <i class='bx bx-box'></i>
-            <span class="links_name">Utilisateur</span>
+            <span class="links_name">User</span>
           </a>
         </li>
         <li>
@@ -90,13 +91,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <li>
           <a href="../chambre/index.php">
             <i class='bx bx-pie-chart-alt-2'></i>
-            <span class="links_name">Chambre</span>
+            <span class="links_name">Room</span>
           </a>
         </li>
         <li>
           <a href="../categorie/index.php">
             <i class='bx bx-coin-stack'></i>
-            <span class="links_name">Categorie</span>
+            <span class="links_name">Category</span>
           </a>
         </li>
         <li class="log_out">
@@ -140,12 +141,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
               <table id="myTable">
                 <tr class="header">
                   <th>Id</th>
-                  <th>Nom</th>
-                  <th>Prenom</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
                   <th>Email</th>
-                  <th>CIN</th>
-                  <th>Numero</th>
-                  <th>type</th>
+                  <th>ID Number</th>
+                  <th>Phone</th>
+                  <th>Type</th>
                 </tr>
                 <?php
                 $ligne = $pdostmt->fetchAll(PDO::FETCH_ASSOC);
@@ -169,15 +170,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             </div>
           </div>
           <div class="top-sales box">
-            <div class="title">Chambres Disponibles</div>
+            <div class="title">Available Rooms</div>
             <input type="text" id="myInputc" onkeyup="myFunctionc()" placeholder="Search for type..">
 
             <table id="myTablec">
               <tr class="header">
                 <th>Id</th>
-                <th>Numero</th>
+                <th>Number</th>
                 <th>Type</th>
-                <th>Prix</th>
+                <th>Price</th>
               </tr>
               <?php
               $lignec = $pdostmtc->fetchAll(PDO::FETCH_ASSOC);
@@ -193,94 +194,104 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             </table>
           </div>
         </div>
-        <div class="wrapper">
-          <div class="registration_form">
-            <form action="" method="post">
-              <div class="form_wrap">
-                <div class="input_grp">
-                  <div class="input_wrap">
-                    <label for="ftype">id utilisateur</label>
+        <!-- form -->
+        <form action="create.php" method="post">
+          <div class="wrapper" style="margin-left: 2%;">
+            <div class="title">
+              Modify Reservation
+            </div>
+            <div class="form">
+              <div class="inputfield">
+                <label>ID user</label>
+                <?php
+                $queryu = "select id from utilisateur";
+                $pdostmtu = $pdo->prepare($queryu);
+                $pdostmtu->execute();
+                ?>
+                <div class="custom_select">
+                  <select id="ftype" name="inputUtilisateur">
                     <?php
-                    $queryu = "select id from utilisateur";
-                    $pdostmtu = $pdo->prepare($queryu);
-                    $pdostmtu->execute();
+                    $ligne = $pdostmtu->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($ligne as $value) {
                     ?>
-                    <select id="ftype" name="inputUtilisateur">
-                      <?php
-                      $ligne = $pdostmtu->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($ligne as $value) {
-                      ?>
-                        <option value="<?php echo $value["id"]; ?>" name="inputidUtilisateur"><?php echo $value["id"]; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                  <div class="input_wrap">
-                    <label for="ftype">id Chambre</label>
+                      <option value="<?php echo $value["id"]; ?>" name="inputidUtilisateur"><?php echo $value["id"]; ?></option>
+                    <?php } ?>
+                  </select>
 
-                    <?php
-                    $querycc = "select id from chambre";
-                    $pdostmtcc = $pdo->prepare($querycc);
-                    $pdostmtcc->execute();
-                    ?>
-                    <select id="ftype" name="inputChambre">
-                      <?php
-                      $ligne = $pdostmtcc->fetchAll(PDO::FETCH_ASSOC);
-                      foreach ($ligne as $value) {
-                      ?>
-                        <option value="<?php echo $value["id"]; ?>" name="inputidChambre"><?php echo $value["id"]; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                  <input type="hidden" placeholder="id" name="inputid" id="inputid" value="<?php echo $row["id"] ?>">
-
-                  <div class="input_wrap">
-                    <label for="ftype">Date Debut</label>
-                    <input type="date" id="ftype" name="inputdateDebut" value="<?php echo $row["dateDebut"] ?>">
-                  </div>
-                  <div class="input_wrap">
-                    <label for="ftype">Date Fin</label>
-                    <input type="date" id="ftype" name="inputdateFin" value="<?php echo $row["dateFin"] ?>">
-                  </div>
-                  <div class="input_wrap">
-                    <label for="ftype">formule</label>
-                    <select id="ftype" name="inputformule">
-                      <!-- <option value="" disabled selected>Choose option</option> -->
-                      <option value="pensionComplete">pensionComplete</option>
-                      <option value="demiPension">demiPension</option>
-                      <option value="bedBreakfast">bedBreakfast</option>
-                      <option value="bedOnly">bedOnly</option>
-                    </select>
-                  </div>
-                  <div class="input_wrap">
-                    <label for="ftype">etat</label>
-                    <select id="ftype" name="inputetat">
-                      <!-- <option value="" disabled selected>Choose option</option> -->
-                      <option value="En Attente">En Attente</option>
-                      <option value="confirmer">confirmer</option>
-                      <option value="annuler">annuler</option>
-
-                  </div>
                 </div>
-              </div><br>
+              </div>
 
-              <div class="button">
-                <a href="#"><input type="submit" value="Ajouter" class="submit_btn">
+              <div class="inputfield">
+                <label>ID Room</label>
+                <?php
+                $querycc = "select id from chambre";
+                $pdostmtcc = $pdo->prepare($querycc);
+                $pdostmtcc->execute();
+                ?>
+                <div class="custom_select">
+                  <select id="ftype" name="inputChambre">
+                    <?php
+                    $ligne = $pdostmtcc->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($ligne as $value) {
+                    ?>
+                      <option value="<?php echo $value["id"]; ?>" name="inputidChambre"><?php echo $value["id"]; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <input type="hidden" placeholder="id" name="inputid" id="inputid" value="<?php echo $row["id"] ?>">
+
+              <div class="inputfield">
+                <label>Check-in</label>
+                <input type="date" name="inputdateDebut" class="input" value="<?php echo $row["dateDebut"] ?>">
+              </div>
+              <div class="inputfield">
+                <label>Check-out</label>
+                <input type="date" name="inputdateDebut" class="input" value="<?php echo $row["dateFin"] ?>">
+              </div>
+              <div class="inputfield">
+                <label>Package</label>
+                <div class="custom_select">
+                  <select name="inputformule">
+                    <option value="" disabled selected>Choose option</option>
+                    <option value="pensionComplete">pensionComplete</option>
+                    <option value="demiPension">demiPension</option>
+                    <option value="bedBreakfast">bedBreakfast</option>
+                    <option value="bedOnly">bedOnly</option>
+                  </select>
+                </div>
+              </div>
+              <div class="inputfield">
+                <label>Status</label>
+                <div class="custom_select">
+                  <select name="inputetat">
+                    <option value="" disabled selected>Choose option</option>
+                    <option value="En Attente">En Attente</option>
+                    <option value="confirmer">confirmer</option>
+                    <option value="annuler">annuler</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="inputfield">
+                <a href="#"><input type="submit" name="submit" value="Modify" class="btn">
                 </a>
               </div>
-            </form>
-          </div>
-          <?php
-          if (!empty($_POST)) {
-            $queryadd = "update reservation set idUtilisateur=:idUtilisateur , idChambre=:idChambre , dateDebut=:iddateDebut , dateFin=:dateFin , formule=:formule , idFacture=:facture , etat=:etat where id=:id";
-            $pdostmtadd = $pdo->prepare($queryadd);
-            $pdostmtadd->execute(["idUtilisateur" => $_POST["inputUtilisateur"], "idChambre" => $_POST["inputChambre"], "iddateDebut" => $_POST["inputdateDebut"], "dateFin" => $_POST["inputdateFin"], "formule" => $_POST["inputformule"], "facture" => $idf, "etat" => $_POST["inputetat"], "id" => $_GET["id"]]);
-            var_dump($_GET["id"], $idf, $_POST["inputUtilisateur"], $_POST["inputChambre"], $_POST["inputdateDebut"], $_POST["inputdateFin"], $_POST["inputetat"], $_POST["inputformule"]);
-            $pdostmtadd->closeCursor();
-            // header("location:index.php");
-          }
+              <?php
+              if (!empty($_POST)) {
+                $queryadd = "update reservation set idUtilisateur=:idUtilisateur , idChambre=:idChambre , dateDebut=:iddateDebut , dateFin=:dateFin , formule=:formule , idFacture=:facture , etat=:etat where id=:id";
+                $pdostmtadd = $pdo->prepare($queryadd);
+                $pdostmtadd->execute(["idUtilisateur" => $_POST["inputUtilisateur"], "idChambre" => $_POST["inputChambre"], "iddateDebut" => $_POST["inputdateDebut"], "dateFin" => $_POST["inputdateFin"], "formule" => $_POST["inputformule"], "facture" => $idf, "etat" => $_POST["inputetat"], "id" => $_GET["id"]]);
+                var_dump($_GET["id"], $idf, $_POST["inputUtilisateur"], $_POST["inputChambre"], $_POST["inputdateDebut"], $_POST["inputdateFin"], $_POST["inputetat"], $_POST["inputformule"]);
+                $pdostmtadd->closeCursor();
+                // header("location:index.php");
+              }
 
-          ?>
-        </div>
+              ?>
+            </div>
+          </div>
+        </form>
+
       </div>
     </section>
 
