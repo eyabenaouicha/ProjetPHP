@@ -32,12 +32,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
             <span class="links_name">User</span>
           </a>
         </li>
-        <li>
-          <a href="../Reservation/index.php">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Reservation</span>
-          </a>
-        </li>
+        
         <li>
           <a href="../chambre/index.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
@@ -48,6 +43,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])){
           <a href="../categorie/index.php">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="../Reservation/index.php">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Reservation</span>
           </a>
         </li>
         <li>
