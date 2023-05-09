@@ -2,7 +2,7 @@
 include_once("connexion.php");
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-  if ($_SESSION['id'] == "admin") {
+  if ($_SESSION['type'] == "admin") {
 ?>
 
 

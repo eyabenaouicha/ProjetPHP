@@ -96,7 +96,7 @@ if($stmt->rowCount() >0){
             if($type == "admin"){
                 header("Location: ../dashboard.php");
             }else{
-                header("Location: ../index.html");
+                header("Location: ../index.php");
             }
             
        

@@ -52,7 +52,19 @@
                             <li><a href="#pricing">Pricing</a></li>
 
                             <li><a href="#contact">Contact</a></li>
+                            <?php
+                           session_start();
+                            if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+                            ?>
+                            <li><a href="login/logout.php">Logout</a></li>
+                            <?php
+                            } else {
+                            ?>
                             <li><a href="login/login.php">Register</a></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
                         </ul>
                     </nav>
                 </div>
