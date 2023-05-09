@@ -31,11 +31,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <li>
                     <a href="../Utilisateur/index.php">
                         <i class='bx bx-box'></i>
-                        <span class="links_name">Utilisateur</span>
+                        <span class="links_name">User</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="active">
+                    <a href="#">
                         <i class='bx bx-list-ul'></i>
                         <span class="links_name">Reservation</span>
                     </a>
@@ -43,13 +43,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 <li>
                     <a href="../chambre/index.php">
                         <i class='bx bx-pie-chart-alt-2'></i>
-                        <span class="links_name">Chambre</span>
+                        <span class="links_name">Room</span>
                     </a>
                 </li>
                 <li>
                     <a href="../categorie/index.php">
                         <i class='bx bx-coin-stack'></i>
-                        <span class="links_name">Categorie</span>
+                        <span class="links_name">Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Facture/index.php" class="active">
+                        <i class='bx bx-box'></i>
+                        <span class="links_name">Facture</span>
                     </a>
                 </li>
                 <li class="log_out">
